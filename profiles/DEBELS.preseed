@@ -18,7 +18,7 @@ d-i keyboard-configuration/xkb-keymap select us
 # Disable network configuration entirely. This is useful for cdrom
 # installations on non-networked devices where the network questions,
 # warning and long timeouts are a nuisance.
-d-i netcfg/enable boolean false
+#d-i netcfg/enable boolean false
 
 # netcfg will choose an interface that has link if possible. This makes it
 # skip displaying a list if there is more than one interface.
@@ -26,7 +26,7 @@ d-i netcfg/enable boolean false
 d-i netcfg/choose_interface select auto
 
 # To pick a particular interface instead:
-d-i netcfg/choose_interface select eth0
+#d-i netcfg/choose_interface select eth0
 
 # To set a different link detection timeout (default is 3 seconds).
 # Values are interpreted as seconds.
@@ -50,9 +50,9 @@ d-i netcfg/choose_interface select eth0
 # Static network configuration.
 #
 # IPv4 example
-d-i netcfg/get_ipaddress string 192.168.1.10
+d-i netcfg/get_ipaddress string 192.168.3.10
 d-i netcfg/get_netmask string 255.255.255.0
-d-i netcfg/get_gateway string 192.168.1.1
+d-i netcfg/get_gateway string 192.168.3.1
 d-i netcfg/get_nameservers string 8.8.8.8
 d-i netcfg/confirm_static boolean true
 #
