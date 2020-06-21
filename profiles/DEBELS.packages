@@ -27,4 +27,4 @@ nut
 whois
 ufw
 zip
-nc
+netcat
