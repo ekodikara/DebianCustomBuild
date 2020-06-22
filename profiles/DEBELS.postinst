@@ -5,3 +5,4 @@ sed -i 's/GRUB_CMDLINE_LINUX=\"\"/GRUB_CMDLINE_LINUX=\"net.ifnames=0 biosdevname
 update-grub
 
 mkdir -p /home/optergy/test-dir
+mkdir -p /tmp/test/dirs
