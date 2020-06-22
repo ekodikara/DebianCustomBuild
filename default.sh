@@ -7,4 +7,4 @@ chmod +x ./profiles/DEBELS.postinst
 
 #d-i preseed/late_command string in-target "update-grub"
 
-build-simple-cdd --conf default.conf
+build-simple-cdd --conf default.conf --local-packages /home/optergy/deb-optergy/debs/ -p DEBELS
