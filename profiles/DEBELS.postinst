@@ -1,27 +1,9 @@
 #!/bin/sh
 
-1>&2 echo "executing postinst"
 sed -i 's/GRUB_CMDLINE_LINUX=\"\"/GRUB_CMDLINE_LINUX=\"net.ifnames=0 biosdevname=0\"/' /etc/default/grub
 update-grub
-
-mkdir -p /home/optergy/test-dir
-mkdir -p /tmp/test/dirs
-
-
 # configure a network interfaces
 cat << EOF >> /etc/network/interfaces
-
-source /etc/network/interfaces.d/*
-
-auto lo
-iface lo inet loopback
-
 # The primary network interface | Auto config done with OE installation by Optergy | Elshan
-allow-hotplug eth0
-iface eth0 inet static
-        address 192.168.1.10
-        netmask 255.255.255.0
-        gateway 192.168.1.1
-
 EOF
 
