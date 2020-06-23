@@ -39,4 +39,29 @@ firmware-bnx2
 mdadm
 fail2ban
 dos2unix
+
+#monitoring tools
+
 lshw
+fdisk
+iostat
+iptraf
+tcpdump
+iotop
+atop
+nethogs
+iftop
+vnstat
+nmon
+glances
+strace
+lsof
+nmap
+wireshark
+selinux-basics
+selinux-policy-default
+auditd
+logcheck
+
+#intruder detection system
+aide
