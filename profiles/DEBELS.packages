@@ -39,3 +39,4 @@ firmware-bnx2
 mdadm
 fail2ban
 dos2unix
+lshw
