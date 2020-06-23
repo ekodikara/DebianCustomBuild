@@ -52,7 +52,7 @@ d-i netcfg/dhcp_options select Configure network manually
 # IPv4 example
 d-i netcfg/get_ipaddress string 192.168.1.10
 d-i netcfg/get_netmask string 255.255.255.0
-#d-i netcfg/get_gateway string 
+d-i netcfg/get_gateway string 192.168.1.1
 d-i netcfg/get_nameservers string 8.8.8.8
 d-i netcfg/confirm_static boolean true
 #
@@ -449,5 +449,5 @@ d-i finish-install/reboot_in_progress note
 #d-i preseed/late_command string apt-install zsh; in-target chsh -s /bin/zsh
 
 #elshan
-#d-i preseed/late_command string in-target "sed -i 's/GRUB_CMDLINE_LINUX=\"\"/GRUB_CMDLINE_LINUX=\"net.ifnames=0 biosdevname=0\"/' /etc/default/grub"
-#d-i preseed/late_command string in-target "update-grub"
+d-i preseed/late_command string in-target /bin/sh -c "sed -i 's/GRUB_CMDLINE_LINUX=\"\"/GRUB_CMDLINE_LINUX=\"net.ifnames=0 biosdevname=0\"/' /etc/default/grub"
+d-i preseed/late_command string in-target /bin/sh -c "update-grub"

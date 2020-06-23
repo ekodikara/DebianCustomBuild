@@ -1,7 +1,6 @@
 git
 fakeroot
 build-essential
-#ncurses-dev
 xz-utils
 libssl-dev
 bc
@@ -22,7 +21,6 @@ monit
 sysv-rc-conf
 dmidecode
 ssh
-#ncurses-dev
 nut
 whois
 ufw
@@ -43,7 +41,6 @@ dos2unix
 #monitoring tools
 
 lshw
-#zfsutils-linux license issue
 iptraf
 tcpdump
 iotop
@@ -62,8 +59,6 @@ selinux-basics
 selinux-policy-default
 auditd
 logcheck
-
-#intruder detection system
 aide
 zsh
 samba
