@@ -43,8 +43,7 @@ dos2unix
 #monitoring tools
 
 lshw
-fdisk
-iostat
+#zfsutils-linux license issue
 iptraf
 tcpdump
 iotop
@@ -58,6 +57,7 @@ strace
 lsof
 nmap
 wireshark
+tshark
 selinux-basics
 selinux-policy-default
 auditd
@@ -65,3 +65,4 @@ logcheck
 
 #intruder detection system
 aide
+zsh
