@@ -327,7 +327,7 @@ d-i apt-setup/security_host string security.debian.org
 #d-i pkgsel/include string openssh-server build-essential
 # Whether to upgrade packages after debootstrap.
 # Allowed values: none, safe-upgrade, full-upgrade
-#d-i pkgsel/upgrade select none
+d-i pkgsel/upgrade select full-upgrade
 
 # Some versions of the installer can report back on what software you have
 # installed, and what software you use. The default is not to report back,
@@ -336,7 +336,8 @@ d-i apt-setup/security_host string security.debian.org
 popularity-contest popularity-contest/participate boolean false
 
 #elshan
-wireshark	wireshark-common/install-setuid: true
+wireshark-common wireshark-common/install-setuid boolean false
+samba-common samba-common/dhcp boolean false
 
 ### Boot loader installation
 # Grub is the default boot loader (for x86). If you want lilo installed
