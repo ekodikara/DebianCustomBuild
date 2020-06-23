@@ -35,5 +35,7 @@ bsdtar
 optergy-java
 tomcat
 optergy
-#firmware-bnx2
+firmware-bnx2
 mdadm
+fail2ban
+dos2unix
