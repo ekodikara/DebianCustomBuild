@@ -176,12 +176,12 @@ ghostscript
 # #imagemagick
 # #imagemagick-common
 #info
-initscripts
-install-info
-installation-report
+# initscripts <<
+# install-info <<
+# installation-report <<
 iproute
-irqbalance
-isag
+# irqbalance
+#isag
 # #iso-codes
 # #ispell
 # #keyutils
@@ -194,8 +194,8 @@ isag
 # #man-db
 # #manpages
 # #manpages-dev
-mdbtools
-mlocate
+# mdbtools
+# mlocate
 # modemmanager
 # mutt
 # #ncurses-term
@@ -215,8 +215,8 @@ mlocate
 # #rake
 # #reportbug
 # rpcbind
-# rsync
-# ruby
+rsync
+ruby
 # ruby2.3
 # rubygems-integration
 # samba-dsdb-modules
@@ -230,7 +230,7 @@ mlocate
 # systemd-shim
 # #sysvinit
 # tcl8.5
-# telnet
+telnet
 # tex-common
 # texinfo
 # #thunar
@@ -238,7 +238,7 @@ mlocate
 # #tightvncserver
 # time
 # #tk8.5
-# traceroute
+traceroute
 # #udisks
 # #ufraw-batch
 # unzip
