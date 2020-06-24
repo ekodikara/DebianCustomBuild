@@ -2,8 +2,26 @@
 
 sed -i 's/GRUB_CMDLINE_LINUX=\"\"/GRUB_CMDLINE_LINUX=\"net.ifnames=0 biosdevname=0\"/' /etc/default/grub
 update-grub
-# configure a network interfaces
-cat << EOF >> /etc/network/interfaces
-# The primary network interface | Auto config done with OE installation by Optergy | Elshan
+#sleep 1
+
+cat << EOF > /etc/network/interfaces
+auto lo
+iface lo inet loopback
+
+allow-hotplug eth0
+        address 192.168.1.10
+        netmask 255.255.255.0
+        gateway 192.168.1.0
+
+
 EOF
+
+# sed -i 's/^allow-hotplug.*/allow-hotplug eth0/' /etc/network/interfaces
+# sed -i 's/*.inet static/iface eth0 inet static/' /etc/network/interfaces
+#sleep 1
+
+sudo -u postgres psql -c "create datbase optergy;"
+sudo -u postgres psql -c "create user optergy with encrypted password 'Op73gyD@t@bA53';"
+sudo -u postgres psql -c "grant all privileges on database optergy to optergy;"
+
 
