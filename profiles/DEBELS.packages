@@ -95,8 +95,7 @@ geoclue-2.0
 geoip-database
 ghostscript
 iproute
-# isag
-# rsync
-# ruby
-# telnet
-# traceroute
+rsync
+perl
+telnet
+traceroute
