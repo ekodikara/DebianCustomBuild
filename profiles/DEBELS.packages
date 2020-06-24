@@ -175,13 +175,13 @@ ghostscript
 # #iio-sensor-proxy #later
 # #imagemagick
 # #imagemagick-common
-# info
-# initscripts
-# install-info
-# installation-report
-# iproute
-# irqbalance
-# isag
+#info
+initscripts
+install-info
+installation-report
+iproute
+irqbalance
+isag
 # #iso-codes
 # #ispell
 # #keyutils
@@ -194,8 +194,8 @@ ghostscript
 # #man-db
 # #manpages
 # #manpages-dev
-# mdbtools
-# mlocate
+mdbtools
+mlocate
 # modemmanager
 # mutt
 # #ncurses-term
