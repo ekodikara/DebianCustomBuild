@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "removing old debs"
-rm -rf tmp/
+#rm -rf tmp/
 
 echo "setting executables"
 #chmod +x ./profiles/default.postinst
