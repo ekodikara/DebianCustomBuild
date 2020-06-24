@@ -86,15 +86,15 @@ dc
 discover
 dnsutils
 easy-rsa
-# exim4
-# extundelete
-# file
-# freepats
-# ftp
-# geoclue-2.0
-# geoip-database
-# ghostscript
-# iproute
+exim4
+extundelete
+file
+freepats
+ftp
+geoclue-2.0
+geoip-database
+ghostscript
+iproute
 # isag
 # rsync
 # ruby
