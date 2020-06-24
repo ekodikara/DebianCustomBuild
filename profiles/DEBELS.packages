@@ -62,3 +62,9 @@ logcheck
 aide
 zsh
 samba
+
+#apps
+
+apparmor
+apt-listchanges
+attr
