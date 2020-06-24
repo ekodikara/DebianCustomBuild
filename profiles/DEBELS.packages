@@ -70,8 +70,8 @@ attr
 
 #taken from old debian
 
-acl #access control list utils
-acpi #power related
+acl 
+acpi
 acpi-support-base
 acpid
 #adwaita-icon-theme #no need
@@ -90,7 +90,6 @@ colord
 #consolekit
 #db5.1-util
 dbus
-dbus-x11
 dc
 #dconf-gsettings-backend
 #dconf-service #will use with dbus
@@ -98,84 +97,84 @@ dc
 #desktop-base
 #desktop-file-utils
 #dictionaries-common
-discover #hardware identification system 
-discover-data
+discover
+#discover-data
 dnsutils
 #doc-debian
-dstat #versatile resource statistics tool 
+#dstat
 easy-rsa
 #enchant
 exim4
 #exo-utils
-extundelete #	utility to recover deleted files from ext3/ext4 partition
+extundelete
 file
-file-rc
-#filezilla
-#filezilla-common
-#firefox-esr
-#firmware-linux-free
-#fonts-droid
-#fonts-lato
+##file-rc
+# #filezilla
+# #filezilla-common
+# #firefox-esr
+# #firmware-linux-free
+# #fonts-droid
+# #fonts-lato
 freepats
 ftp
-#gcc-4.6
-#gcc-4.6-base
-#gconf-service
-#gconf2
-#gconf2-common
-#gedit
-#gedit-common
+# #gcc-4.6
+# #gcc-4.6-base
+# #gconf-service
+# #gconf2
+# #gconf2-common
+# #gedit
+# #gedit-common
 geoclue-2.0
 geoip-database
 ghostscript
-#gir1.2-atk-1.0
-#gir1.2-clutter-1.0
-#gir1.2-cogl-1.0
-#gir1.2-coglpango-1.0
-#gir1.2-freedesktop
-#gir1.2-gdkpixbuf-2.0
-#gir1.2-glib-2.0
-#gir1.2-gstreamer-0.10
-#gir1.2-gtk-3.0
-#gir1.2-gtksource-3.0
-#gir1.2-json-1.0
-#gir1.2-pango-1.0
-#gir1.2-peas-1.0
-#glib-networking
-#glib-networking-common
-#glib-networking-services
-#gnome-js-common
-#gnome-mime-data
-#gnome-system-monitor
-#gnome-user-guide
-#gnuplot-x11
-#groff-base
-#grub-pc
-#grub-pc-bin
-#gsettings-desktop-schemas
-#gsfonts
-#gstreamer0.10-ffmpeg
-#gstreamer0.10-plugins-bad
-#gstreamer0.10-plugins-base
-#gstreamer1.0-plugins-base
-#gstreamer1.0-plugins-good
-#gstreamer1.0-x
-#gtk-update-icon-cache
-#gtk2-engines-xfce
-gvfs
-#gvfs-common
-#gvfs-daemons
-#gvfs-libs
-#hicolor-icon-theme
-host
-#hunspell-en-us
-#iamerican
-#ibritish
-#iceweasel
-#ienglish-common
-#iio-sensor-proxy #later
-#imagemagick
-#imagemagick-common
+# #gir1.2-atk-1.0
+# #gir1.2-clutter-1.0
+# #gir1.2-cogl-1.0
+# #gir1.2-coglpango-1.0
+# #gir1.2-freedesktop
+# #gir1.2-gdkpixbuf-2.0
+# #gir1.2-glib-2.0
+# #gir1.2-gstreamer-0.10
+# #gir1.2-gtk-3.0
+# #gir1.2-gtksource-3.0
+# #gir1.2-json-1.0
+# #gir1.2-pango-1.0
+# #gir1.2-peas-1.0
+# #glib-networking
+# #glib-networking-common
+# #glib-networking-services
+# #gnome-js-common
+# #gnome-mime-data
+# #gnome-system-monitor
+# #gnome-user-guide
+# #gnuplot-x11
+# #groff-base
+# #grub-pc
+# #grub-pc-bin
+# #gsettings-desktop-schemas
+# #gsfonts
+# #gstreamer0.10-ffmpeg
+# #gstreamer0.10-plugins-bad
+# #gstreamer0.10-plugins-base
+# #gstreamer1.0-plugins-base
+# #gstreamer1.0-plugins-good
+# #gstreamer1.0-x
+# #gtk-update-icon-cache
+# #gtk2-engines-xfce
+# gvfs
+# #gvfs-common
+# #gvfs-daemons
+# #gvfs-libs
+# #hicolor-icon-theme
+# #host
+# #hunspell-en-us
+# #iamerican
+# #ibritish
+# #iceweasel
+# #ienglish-common
+# #iio-sensor-proxy #later
+# #imagemagick
+# #imagemagick-common
 info
 initscripts
 install-info
@@ -183,8 +182,100 @@ installation-report
 iproute
 irqbalance
 isag
-iso-codes
-#ispell
-#keyutils
-#krb5-locales
-laptop-detect
+# #iso-codes
+# #ispell
+# #keyutils
+# #krb5-locales
+# laptop-detect
+
+#step two
+
+## lsb-release
+# #man-db
+# #manpages
+# #manpages-dev
+# mdbtools
+# mlocate
+# modemmanager
+# mutt
+# #ncurses-term
+# netpbm
+# nfs-common
+# #notification-daemon
+# #opensc
+# #openvpn
+# #orage
+# #os-prober
+# #pgdg-keyring
+# #policykit-1
+# #postgresql-contrib-9.2
+# ppp
+# procmail
+# psmisc
+# #rake
+# #reportbug
+# rpcbind
+# rsync
+# ruby
+# ruby2.3
+# rubygems-integration
+# samba-dsdb-modules
+# samba-vfs-modules
+# #sane-utils
+# #sgml-base
+# #shared-mime-info
+#sockstat
+# #synaptic
+# sysstat
+# systemd-shim
+# #sysvinit
+# tcl8.5
+# telnet
+# tex-common
+# texinfo
+# #thunar
+# #thunar-data
+# #tightvncserver
+# time
+# #tk8.5
+# traceroute
+# #udisks
+# #ufraw-batch
+# unzip
+# usb-modeswitch
+# #usb-modeswitch-data
+# #util-linux-locales
+# w3m
+# #wamerican
+# #wpasupplicant
+# wvdial
+# #x11-utils
+# #x11-xkb-utils
+# #x11-xserver-utils
+# #xauth
+# #xbitmaps
+# #xdg-user-dirs
+# #xdg-utils
+# #xfce-keyboard-shortcuts
+# #xfce4
+# #xfce4-appfinder
+# #xfce4-mixer
+# #xfce4-panel
+# #xfce4-session
+# #xfce4-settings
+# #xfce4-taskmanager
+# #xfce4-terminal
+# #xfce4-utils
+# #xfconf
+# #xfdesktop4
+# #xfdesktop4-data
+# #xfonts-base
+# #xfonts-encodings
+# #xfonts-utils
+# #xfwm4
+# #xinit
+# xml-core
+# #xterm
+# #yelp
+# #yelp-xsl
+# zenity
