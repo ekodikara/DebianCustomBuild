@@ -1,8 +1,13 @@
 #!/bin/sh
 
 sed -i 's/GRUB_CMDLINE_LINUX=\"\"/GRUB_CMDLINE_LINUX=\"net.ifnames=0 biosdevname=0\"/' /etc/default/grub
+sed -i 's/_TIMEOUT=5/_TIMEOUT=2/' /etc/default/grub
+sed -i 's/echo Debian/echo Optergy Debian/' /etc/default/grub
+sed -i 's/cyan\/blue/green\/black/' /etc/grub.d/05_debian_theme
+sed -i 's/white\/blue/black\/green/' /etc/grub.d/05_debian_theme
+
 update-grub
-#sleep 1
+sleep 2
 
 cat << EOF > /etc/network/interfaces
 auto lo
@@ -15,13 +20,114 @@ allow-hotplug eth0
 
 
 EOF
+cat << EOF >> /etc/sudoers
+optergy ALL=(ALL) NOPASSWD:ALL
+
+EOF
+cat << EOF > /boot/grub/custom.cfg
+set color_normal=black/black
+
+EOF
+
+cat << EOF > /home/optergy/.profile_bash
+
+
+# BY Optergy | Elshan | 2020
+
+red="\[$(tput setaf 160)\]"
+bright_red="\[$(tput setaf 196)\]"
+light_purple="\[$(tput setaf 60)\]"
+orange="\[$(tput setaf 172)\]"
+blue="\[$(tput setaf 21)\]"
+light_blue="\[$(tput setaf 80)\]"
+bold="\[$(tput bold)\]"
+reset="\[$(tput sgr0)\]"
+
+username_color="${reset}${bold}${light_blue}\$([[ \${EUID} == 0 ]] && echo \"${bright_red}\")";
+at_color=$reset$bold$orange
+host_color=$reset$bold$blue
+directory_color=$reset$light_purple
+etc_color=$reset$red
+on_error="\$([[ \$? != 0 ]] && echo \"${etc_color}[${at_color}✗${etc_color}]─\")"
+symbol="${reset}${bold}${bright_red}$(if [[ ${EUID} == 0 ]]; then echo '#'; else echo '✗'; fi)"
+
+PS1="${etc_color}┌─${on_error}[";
+PS1+="${username_color}\u"; # \u=Username
+PS1+="${at_color}@";
+PS1+="${host_color}\h" #\h=Host
+PS1+="${etc_color}]-[";
+PS1+="${directory_color}\w"; # \w=Working directory
+PS1+="${etc_color}]\n└──╼ "; # \n=New Line
+PS1+="${symbol}${reset}";
+
+export PS1
+
+EOF
+
+
+cat << EOF > /root/.profile_bash
+
+# BY Optergy | Elshan | 2020
+
+red="\[$(tput setaf 160)\]"
+bright_red="\[$(tput setaf 196)\]"
+light_purple="\[$(tput setaf 60)\]"
+orange="\[$(tput setaf 172)\]"
+blue="\[$(tput setaf 21)\]"
+light_blue="\[$(tput setaf 80)\]"
+bold="\[$(tput bold)\]"
+reset="\[$(tput sgr0)\]"
+
+username_color="${reset}${bold}${light_blue}\$([[ \${EUID} == 0 ]] && echo \"${bright_red}\")";
+at_color=$reset$bold$orange
+host_color=$reset$bold$blue
+directory_color=$reset$light_purple
+etc_color=$reset$red
+on_error="\$([[ \$? != 0 ]] && echo \"${etc_color}[${at_color}✗${etc_color}]─\")"
+symbol="${reset}${bold}${bright_red}$(if [[ ${EUID} == 0 ]]; then echo '#'; else echo '✗'; fi)"
+
+PS1="${etc_color}┌─${on_error}[";
+PS1+="${username_color}\u"; # \u=Username
+PS1+="${at_color}@";
+PS1+="${host_color}\h" #\h=Host
+PS1+="${etc_color}]-[";
+PS1+="${directory_color}\w"; # \w=Working directory
+PS1+="${etc_color}]\n└──╼ "; # \n=New Line
+PS1+="${symbol}${reset}";
+
+export PS1
+
+EOF
+
+cat << EOF >> /home/optergy/.bashrc
+
+if [ -f /home/optergy/.profile_bash ]; then
+  . /home/optergy/.profile_bash
+fi
+
+EOF
+
+cat << EOF >> /root/.bashrc
+
+if [ -f /root/.profile_bash ]; then
+  . /root/.profile_bash
+fi
+
+EOF
+
+
+chown optergy:optergy /home/optergy/.profile_bash
+chown optergy:optergy /home/optergy/.bashrc
 
 # sed -i 's/^allow-hotplug.*/allow-hotplug eth0/' /etc/network/interfaces
 # sed -i 's/*.inet static/iface eth0 inet static/' /etc/network/interfaces
-#sleep 1
-
-sudo -u postgres psql -c "create datbase optergy;"
-sudo -u postgres psql -c "create user optergy with encrypted password 'Op73gyD@t@bA53';"
-sudo -u postgres psql -c "grant all privileges on database optergy to optergy;"
+sleep 1
+sudo service postgresql restart
+sleep 1
+sudo -u postgres  psql -c "create database optergy;"
+sleep 1
+sudo -u postgres  psql -c "create user optergy with encrypted password 'Op73gyD@t@bA53';"
+sleep 1
+sudo -u postgres  psql -c "grant all privileges on database optergy to optergy;"
 
 
