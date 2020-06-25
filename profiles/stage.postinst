@@ -1,8 +1,13 @@
 #!/bin/sh
 
 sed -i 's/GRUB_CMDLINE_LINUX=\"\"/GRUB_CMDLINE_LINUX=\"net.ifnames=0 biosdevname=0\"/' /etc/default/grub
+sed -i 's/_TIMEOUT=5/_TIMEOUT=2/' /etc/default/grub
+sed -i 's/echo Debian/echo Optergy Debian/' /etc/default/grub
+sed -i 's/cyan\/blue/green\/black/' /etc/grub.d/05_debian_theme
+sed -i 's/white\/blue/black\/green/' /etc/grub.d/05_debian_theme
+
 update-grub
-#sleep 1
+sleep 2
 
 cat << EOF > /etc/network/interfaces
 auto lo
@@ -13,6 +18,10 @@ allow-hotplug eth0
         netmask 255.255.255.0
         gateway 192.168.1.0
 
+
+EOF
+cat << EOF >> /etc/sudoers
+optergy ALL=(ALL) NOPASSWD:ALL
 
 EOF
 
