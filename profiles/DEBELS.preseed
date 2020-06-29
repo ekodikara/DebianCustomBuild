@@ -226,6 +226,7 @@ d-i partman/confirm_nooverwrite boolean true
 # When disk encryption is enabled, skip wiping the partitions beforehand.
 #d-i partman-auto-crypto/erase_disks boolean false
 
+#RAID Elshan
 ## Partitioning using RAID
 # The method should be set to "raid".
 #d-i partman-auto/method string raid

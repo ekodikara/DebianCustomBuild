@@ -18,15 +18,15 @@ d-i keyboard-configuration/xkb-keymap select us
 # Disable network configuration entirely. This is useful for cdrom
 # installations on non-networked devices where the network questions,
 # warning and long timeouts are a nuisance.
-#d-i netcfg/enable boolean false
+d-i netcfg/enable boolean false
 
 # netcfg will choose an interface that has link if possible. This makes it
 # skip displaying a list if there is more than one interface.
 #elshan
-d-i netcfg/choose_interface select auto
+#d-i netcfg/choose_interface select auto
 
 # To pick a particular interface instead:
-d-i netcfg/choose_interface select eth0
+#d-i netcfg/choose_interface select eth0
 
 # To set a different link detection timeout (default is 3 seconds).
 # Values are interpreted as seconds.
@@ -117,8 +117,8 @@ d-i apt-setup/contrib boolean true
 d-i passwd/make-user boolean true
 
 # Root password, either in clear text
-d-i passwd/root-password password optergy!1EM
-d-i passwd/root-password-again password optergy!1EM
+d-i passwd/root-password password 2o2O@0pt3r97~3ek
+d-i passwd/root-password-again password 2o2O@0pt3r97~3ek
 # or encrypted using a crypt(3)  hash.
 #d-i passwd/root-password-crypted password $1$0To7ZIDm$pI/ZV3BZNEoXesEhh9pz9.
 
@@ -148,7 +148,7 @@ d-i time/zone string US/Eastern
 # Controls whether to use NTP to set the clock during the install
 d-i clock-setup/ntp boolean true
 # NTP server to use. The default is almost always fine here.
-#d-i clock-setup/ntp-server string ntp.example.com
+d-i clock-setup/ntp-server string pool.ntp.org
 
 ### Partitioning
 ## Partitioning example

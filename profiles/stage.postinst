@@ -3,7 +3,7 @@
 sed -i 's/GRUB_CMDLINE_LINUX=\"\"/GRUB_CMDLINE_LINUX=\"net.ifnames=0 biosdevname=0\"/' /etc/default/grub
 sed -i 's/_TIMEOUT=5/_TIMEOUT=2/' /etc/default/grub
 sed -i 's/echo Debian/echo Optergy Debian/' /etc/default/grub
-sed -i 's/cyan\/blue/green\/black/' /etc/grub.d/05_debian_theme
+sed -i 's/cyan\/blue/light-green\/blue/' /etc/grub.d/05_debian_theme
 sed -i 's/white\/blue/black\/green/' /etc/grub.d/05_debian_theme
 
 update-grub
@@ -13,10 +13,12 @@ cat << EOF > /etc/network/interfaces
 auto lo
 iface lo inet loopback
 
+auto eth0
 allow-hotplug eth0
-        address 192.168.1.10
+iface eth0 inet static
+        address 192.168.3.25
         netmask 255.255.255.0
-        gateway 192.168.1.0
+        gateway 192.168.3.1
 
 
 EOF
@@ -29,94 +31,234 @@ set color_normal=black/black
 
 EOF
 
-cat << EOF > /home/optergy/.profile_bash
+sleep 1
 
-# BY Optergy | Elshan | 2020
+cat << EOF > /home/optergy/.bashrc
 
-red="\[$(tput setaf 160)\]"
-bright_red="\[$(tput setaf 196)\]"
-light_purple="\[$(tput setaf 60)\]"
-orange="\[$(tput setaf 172)\]"
-blue="\[$(tput setaf 21)\]"
-light_blue="\[$(tput setaf 80)\]"
-bold="\[$(tput bold)\]"
-reset="\[$(tput sgr0)\]"
+# Optergy bashrc to make fancy looking gui in bash | dev Elshan -2020
+[ -z "$PS1" ] && return
 
-username_color="${reset}${bold}${light_blue}\$([[ \${EUID} == 0 ]] && echo \"${bright_red}\")";
-at_color=$reset$bold$orange
-host_color=$reset$bold$blue
-directory_color=$reset$light_purple
-etc_color=$reset$red
-on_error="\$([[ \$? != 0 ]] && echo \"${etc_color}[${at_color}✗${etc_color}]─\")"
-symbol="${reset}${bold}${bright_red}$(if [[ ${EUID} == 0 ]]; then echo '#'; else echo '✗'; fi)"
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:~/.local/bin:/snap/bin:$PATH
 
-PS1="${etc_color}┌─${on_error}[";
-PS1+="${username_color}\u"; # \u=Username
-PS1+="${at_color}@";
-PS1+="${host_color}\h" #\h=Host
-PS1+="${etc_color}]-[";
-PS1+="${directory_color}\w"; # \w=Working directory
-PS1+="${etc_color}]\n└──╼ "; # \n=New Line
-PS1+="${symbol}${reset}";
+HISTCONTROL=ignoreboth
 
-export PS1
+shopt -s histappend
 
-EOF
+HISTSIZE=1000
+HISTFILESIZE=2000
 
-cat << EOF > /root/.profile_bash
+shopt -s checkwinsize
+clear
 
-# BY Optergy | Elshan | 2020
+case "$TERM" in
+    xterm-color) color_prompt=yes;;
+esac
 
-red="\[$(tput setaf 160)\]"
-bright_red="\[$(tput setaf 196)\]"
-light_purple="\[$(tput setaf 60)\]"
-orange="\[$(tput setaf 172)\]"
-blue="\[$(tput setaf 21)\]"
-light_blue="\[$(tput setaf 80)\]"
-bold="\[$(tput bold)\]"
-reset="\[$(tput sgr0)\]"
+force_color_prompt=yes
 
-username_color="${reset}${bold}${light_blue}\$([[ \${EUID} == 0 ]] && echo \"${bright_red}\")";
-at_color=$reset$bold$orange
-host_color=$reset$bold$blue
-directory_color=$reset$light_purple
-etc_color=$reset$red
-on_error="\$([[ \$? != 0 ]] && echo \"${etc_color}[${at_color}✗${etc_color}]─\")"
-symbol="${reset}${bold}${bright_red}$(if [[ ${EUID} == 0 ]]; then echo '#'; else echo '✗'; fi)"
-
-PS1="${etc_color}┌─${on_error}[";
-PS1+="${username_color}\u"; # \u=Username
-PS1+="${at_color}@";
-PS1+="${host_color}\h" #\h=Host
-PS1+="${etc_color}]-[";
-PS1+="${directory_color}\w"; # \w=Working directory
-PS1+="${etc_color}]\n└──╼ "; # \n=New Line
-PS1+="${symbol}${reset}";
-
-export PS1
-
-
-EOF
-
-cat << EOF >> /home/optergy/.bashrc
-
-if [ -f /home/optergy/.profile_bash ]; then
-  . /home/optergy/.profile_bash
+if [ -n "$force_color_prompt" ]; then
+    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+	# We have color support; assume it's compliant with Ecma-48
+	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+	# a case would tend to support setf rather than setaf.)
+	color_prompt=yes
+    else
+	color_prompt=
+    fi
 fi
 
-EOF
-
-cat << EOF >> /root/.bashrc
-
-if [ -f /root/.profile_bash ]; then
-  . /root/.profile_bash
+if [ "$color_prompt" = yes ]; then
+    PS1="\[\033[0;31m\]\342\224\214\342\224\200\$([[ \$? != 0 ]] && echo \"[\[\033[0;31m\]\342\234\227\[\033[0;37m\]]\342\224\200\")[$(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]root\[\033[01;33m\]@\[\033[01;96m\]\h'; else echo '\[\033[0;39m\]\u\[\033[01;33m\]@\[\033[01;96m\]\h'; fi)\[\033[0;31m\]]\342\224\200[\[\033[0;32m\]\w\[\033[0;31m\]]\n\[\033[0;31m\]\342\224\224\342\224\200\342\224\200\342\225\274 \[\033[0m\]\[\e[01;33m\]\\$\[\e[0m\]"
+else
+    PS1='┌──[\u@\h]─[\w]\n└──╼ \$ '
 fi
 
+# Set 'man' colors
+if [ "$color_prompt" = yes ]; then
+	man() {
+	env \
+	LESS_TERMCAP_mb=$'\e[01;31m' \
+	LESS_TERMCAP_md=$'\e[01;31m' \
+	LESS_TERMCAP_me=$'\e[0m' \
+	LESS_TERMCAP_se=$'\e[0m' \
+	LESS_TERMCAP_so=$'\e[01;44;33m' \
+	LESS_TERMCAP_ue=$'\e[0m' \
+	LESS_TERMCAP_us=$'\e[01;32m' \
+	man "$@"
+	}
+fi
+
+unset color_prompt force_color_prompt
+
+case "$TERM" in
+xterm*|rxvt*)
+    PS1="\[\033[0;31m\]\342\224\214\342\224\200\$([[ \$? != 0 ]] && echo \"[\[\033[0;31m\]\342\234\227\[\033[0;37m\]]\342\224\200\")[$(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]root\[\033[01;33m\]@\[\033[01;96m\]\h'; else echo '\[\033[0;39m\]\u\[\033[01;33m\]@\[\033[01;96m\]\h'; fi)\[\033[0;31m\]]\342\224\200[\[\033[0;32m\]\w\[\033[0;31m\]]\n\[\033[0;31m\]\342\224\224\342\224\200\342\224\200\342\225\274 \[\033[0m\]\[\e[01;33m\]\\$\[\e[0m\]"
+    ;;
+*)
+    ;;
+esac
+
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+alias ll='ls -lh'
+alias la='ls -lha'
+alias l='ls -CF'
+alias em='emacs -nw'
+alias dd='dd status=progress'
+alias _='sudo'
+alias _i='sudo -i'
+alias restart='/etc/init.d/optergy restart'
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+
+
+figlet -f smslant "Optergy Enterprise"
+cat /usr/local/Optergy/conf/version
+echo ""
+last -2
+echo ""
+date
+echo ""
+
 EOF
 
+sleep 1
 
-chown optergy:optergy /home/optergy/.profile_bash
+cat << EOF > /root/.bashrc
+
+# Optergy bashrc to make fancy looking gui in bash | dev Elshan -2020
+[ -z "$PS1" ] && return
+
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:~/.local/bin:/snap/bin:$PATH
+
+HISTCONTROL=ignoreboth
+
+shopt -s histappend
+
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+shopt -s checkwinsize
+clear
+
+case "$TERM" in
+    xterm-color) color_prompt=yes;;
+esac
+
+force_color_prompt=yes
+
+if [ -n "$force_color_prompt" ]; then
+    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+	# We have color support; assume it's compliant with Ecma-48
+	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+	# a case would tend to support setf rather than setaf.)
+	color_prompt=yes
+    else
+	color_prompt=
+    fi
+fi
+
+if [ "$color_prompt" = yes ]; then
+    PS1="\[\033[0;31m\]\342\224\214\342\224\200\$([[ \$? != 0 ]] && echo \"[\[\033[0;31m\]\342\234\227\[\033[0;37m\]]\342\224\200\")[$(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]root\[\033[01;33m\]@\[\033[01;96m\]\h'; else echo '\[\033[0;39m\]\u\[\033[01;33m\]@\[\033[01;96m\]\h'; fi)\[\033[0;31m\]]\342\224\200[\[\033[0;32m\]\w\[\033[0;31m\]]\n\[\033[0;31m\]\342\224\224\342\224\200\342\224\200\342\225\274 \[\033[0m\]\[\e[01;33m\]\\$\[\e[0m\]"
+else
+    PS1='┌──[\u@\h]─[\w]\n└──╼ \$ '
+fi
+
+# Set 'man' colors
+if [ "$color_prompt" = yes ]; then
+	man() {
+	env \
+	LESS_TERMCAP_mb=$'\e[01;31m' \
+	LESS_TERMCAP_md=$'\e[01;31m' \
+	LESS_TERMCAP_me=$'\e[0m' \
+	LESS_TERMCAP_se=$'\e[0m' \
+	LESS_TERMCAP_so=$'\e[01;44;33m' \
+	LESS_TERMCAP_ue=$'\e[0m' \
+	LESS_TERMCAP_us=$'\e[01;32m' \
+	man "$@"
+	}
+fi
+
+unset color_prompt force_color_prompt
+
+case "$TERM" in
+xterm*|rxvt*)
+    PS1="\[\033[0;31m\]\342\224\214\342\224\200\$([[ \$? != 0 ]] && echo \"[\[\033[0;31m\]\342\234\227\[\033[0;37m\]]\342\224\200\")[$(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]root\[\033[01;33m\]@\[\033[01;96m\]\h'; else echo '\[\033[0;39m\]\u\[\033[01;33m\]@\[\033[01;96m\]\h'; fi)\[\033[0;31m\]]\342\224\200[\[\033[0;32m\]\w\[\033[0;31m\]]\n\[\033[0;31m\]\342\224\224\342\224\200\342\224\200\342\225\274 \[\033[0m\]\[\e[01;33m\]\\$\[\e[0m\]"
+    ;;
+*)
+    ;;
+esac
+
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+alias ll='ls -lh'
+alias la='ls -lha'
+alias l='ls -CF'
+alias em='emacs -nw'
+alias dd='dd status=progress'
+alias _='sudo'
+alias _i='sudo -i'
+alias restart='/etc/init.d/optergy restart'
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+
+
+figlet -f smslant "Optergy Enterprise"
+cat /usr/local/Optergy/conf/version
+echo ""
+last -2
+echo ""
+date
+echo ""
+
+EOF
+
+sleep 1
+
+
 chown optergy:optergy /home/optergy/.bashrc
+chown -R optergy:optergy /usr/local/tomcat/
+sudo mkdir /usr/local/Optergy/
+chown -R optergy:optergy /usr/local/Optergy/
+
 
 # sed -i 's/^allow-hotplug.*/allow-hotplug eth0/' /etc/network/interfaces
 # sed -i 's/*.inet static/iface eth0 inet static/' /etc/network/interfaces
@@ -130,6 +272,12 @@ sleep 1
 sudo -u postgres  psql -c "create user optergy with encrypted password 'Op73gyD@t@bA53';"
 sleep 1
 sudo -u postgres  psql -c "grant all privileges on database optergy to optergy;"
+sleep 1
+sudo apt-get -o Dpkg::Options::="--force-overwrite" install optergy
+sleep 1
+sudo chown -R optergy:optergy /usr/local/tomcat/
+sudo chown -R optergy:optergy /usr/local/Optergy/
+sudo dpkg -i --force-overwrite /media/cdrom/pool/main/o/optergy/optergy_3.0.2a_all.deb
 sleep 1
 
 

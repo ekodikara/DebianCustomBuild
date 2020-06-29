@@ -1,2 +1,112 @@
-postgresql
+#lsb-compat
 sudo
+git
+fakeroot
+build-essential
+xz-utils
+libssl-dev
+bc
+build-essential
+#tshark
+flex
+libelf-dev
+bison
+linux-headers-4.9.0-12-amd64
+dkms
+sudo
+curl
+gnupg
+net-tools
+htop
+at
+aptitude
+postgresql
+monit
+sysv-rc-conf
+dmidecode
+ssh
+nut
+whois
+ufw
+zip
+netcat
+parted
+tree
+ntp
+bsdtar
+optergy-java
+tomcat
+#firmware-bnx2
+mdadm
+fail2ban
+dos2unix
+optergy-util-ex
+optergy
+
+lshw
+iptraf
+tcpdump
+iotop
+figlet
+# atop
+# nethog
+# iftop
+vnstat
+# nmon
+# glances
+# strace
+lsof
+# nmap
+#wireshark
+# tshark
+selinux-basics
+#selinux-policy-default
+#auditd
+#logcheck
+#aide
+samba
+
+apparmor
+apt-listchanges
+attr
+
+acl 
+acpi
+acpi-support-base
+acpid
+apparmor
+apt-listchanges
+attr
+avahi-daemon
+bind9
+bridge-utils
+bsd-mailx
+ca-certificates
+cgmanager
+#colord
+dbus
+# dc
+# discover
+#dnsutils
+# easy-rsa
+# exim4
+# extundelete
+# file
+# freepats
+# ftp
+# geoclue-2.0
+# geoip-database
+# ghostscript
+iproute
+# rsync
+# perl
+# telnet
+# traceroute
+#lsb-compat
+
+
+optergy-util-ex
+perl
+#end
+#end
+

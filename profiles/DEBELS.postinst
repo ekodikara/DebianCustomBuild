@@ -3,7 +3,7 @@
 sed -i 's/GRUB_CMDLINE_LINUX=\"\"/GRUB_CMDLINE_LINUX=\"net.ifnames=0 biosdevname=0\"/' /etc/default/grub
 sed -i 's/_TIMEOUT=5/_TIMEOUT=2/' /etc/default/grub
 sed -i 's/echo Debian/echo Optergy Debian/' /etc/default/grub
-sed -i 's/cyan\/blue/green\/black/' /etc/grub.d/05_debian_theme
+sed -i 's/cyan\/blue/light-green\/blue/' /etc/grub.d/05_debian_theme
 sed -i 's/white\/blue/black\/green/' /etc/grub.d/05_debian_theme
 
 update-grub
@@ -13,7 +13,9 @@ cat << EOF > /etc/network/interfaces
 auto lo
 iface lo inet loopback
 
+auto eth0
 allow-hotplug eth0
+iface eth0 inet static
         address 192.168.1.10
         netmask 255.255.255.0
         gateway 192.168.1.0
@@ -30,7 +32,6 @@ set color_normal=black/black
 EOF
 
 cat << EOF > /home/optergy/.profile_bash
-
 
 # BY Optergy | Elshan | 2020
 
@@ -63,7 +64,6 @@ PS1+="${symbol}${reset}";
 export PS1
 
 EOF
-
 
 cat << EOF > /root/.profile_bash
 
@@ -97,6 +97,7 @@ PS1+="${symbol}${reset}";
 
 export PS1
 
+
 EOF
 
 cat << EOF >> /home/optergy/.bashrc
@@ -106,7 +107,7 @@ if [ -f /home/optergy/.profile_bash ]; then
 fi
 
 EOF
-
+sleep 1
 cat << EOF >> /root/.bashrc
 
 if [ -f /root/.profile_bash ]; then
@@ -121,6 +122,8 @@ chown optergy:optergy /home/optergy/.bashrc
 
 # sed -i 's/^allow-hotplug.*/allow-hotplug eth0/' /etc/network/interfaces
 # sed -i 's/*.inet static/iface eth0 inet static/' /etc/network/interfaces
+#sleep 1
+
 sleep 1
 sudo service postgresql restart
 sleep 1
@@ -129,5 +132,6 @@ sleep 1
 sudo -u postgres  psql -c "create user optergy with encrypted password 'Op73gyD@t@bA53';"
 sleep 1
 sudo -u postgres  psql -c "grant all privileges on database optergy to optergy;"
+sleep 1
 
 

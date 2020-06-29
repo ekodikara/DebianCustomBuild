@@ -30,9 +30,7 @@ parted
 tree
 ntp
 bsdtar
-optergy-java
-tomcat
-optergy
+
 firmware-bnx2
 mdadm
 fail2ban
@@ -99,3 +97,8 @@ rsync
 perl
 telnet
 traceroute
+
+
+optergy-java
+tomcat
+optergy
