@@ -1,5 +1,5 @@
 
-# sudo
+ sudo
 # git
 # fakeroot
 # build-essential
@@ -95,7 +95,7 @@
 # # ghostscript
 # iproute
 # # rsync
- perl
+# perl
 # # telnet
 # # traceroute
 
