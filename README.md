@@ -1,2 +1,2 @@
-# DebanCustomBuild
+# DebianCustomBuild
 Debian Simple-CDD
