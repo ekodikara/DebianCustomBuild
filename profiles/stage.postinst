@@ -1,7 +1,7 @@
 #!/bin/sh
 
 sed -i 's/GRUB_CMDLINE_LINUX=\"\"/GRUB_CMDLINE_LINUX=\"net.ifnames=0 biosdevname=0\"/' /etc/default/grub
-sed -i 's/_TIMEOUT=5/_TIMEOUT=2/' /etc/default/grub
+sed -i 's/_TIMEOUT=5/_TIMEOUT=1/' /etc/default/grub
 sed -i 's/echo Debian/echo Optergy Debian/' /etc/default/grub
 sed -i 's/cyan\/blue/light-green\/blue/' /etc/grub.d/05_debian_theme
 sed -i 's/white\/blue/black\/green/' /etc/grub.d/05_debian_theme
@@ -28,6 +28,12 @@ optergy ALL=(ALL) NOPASSWD:ALL
 EOF
 cat << EOF > /boot/grub/custom.cfg
 set color_normal=black/black
+
+EOF
+
+cat << EOF > /etc/resolv.conf
+nameserver 8.8.8.8
+nameserver 8.8.4.4
 
 EOF
 
@@ -264,79 +270,79 @@ chown -R optergy:optergy /usr/local/Optergy/
 # sed -i 's/*.inet static/iface eth0 inet static/' /etc/network/interfaces
 #sleep 1
 
-sleep 1
-sudo service postgresql restart
-sleep 1
-sudo -u postgres  psql -c "create database optergy 'Optergy main db - By Optergy [dev:elshan]';"
-sleep 1
-sudo -u postgres  psql -c "create database countlogs 'Count log db - By Optergy [dev:elshan]';"
-sleep 1
-sudo -u postgres  psql -c "create database energylogs 'Store all energy related db - By Optergy [dev:elshan]';"
-sleep 1
-sudo -u postgres  psql -c "create database issues 'Issues db - By Optergy [dev:elshan]';"
-sleep 1
-sudo -u postgres  psql -c "create database naberslogs 'Store IEQ Data - By Optergy [dev:elshan]';"
-sleep 1
-sudo -u postgres  psql -c "create database trendlogs 'Store trend Data - By Optergy [dev:elshan]';"
-sleep 1
-sudo -u postgres  psql -c "create user optergy with encrypted password 'Op73gyD@t@bA53';"
-sleep 1
-sudo -u postgres  psql -c "grant all privileges on database optergy to optergy;"
-sleep 1
-sudo -u postgres  psql -c "grant all privileges on database countlogs to optergy;"
-sleep 1
-sudo -u postgres  psql -c "grant all privileges on database energylogs to optergy;"
-sleep 1
-sudo -u postgres  psql -c "grant all privileges on database issues to optergy;"
-sleep 1
-sudo -u postgres  psql -c "grant all privileges on database naberslogs to optergy;"
-sleep 1
-sudo -u postgres  psql -c "grant all privileges on database trendlogs to optergy;"
-sleep 1
-sudo apt-get -o Dpkg::Options::="--force-overwrite" install optergy
-sleep 1
-sudo chown -R optergy:optergy /usr/local/tomcat/
-sudo chown -R optergy:optergy /usr/local/Optergy/
-sleep 1
-sudo dpkg -i --force-overwrite /media/cdrom/pool/main/o/optergy/optergy_3.0.2a_all.deb
-sleep 3
-sudo update-rc.d bacnet defaults
-sleep 1
-sudo update-rc.d compiler defaults
-sleep 1
-sudo update-rc.d counter defaults
-sleep 1
-sudo update-rc.d demandlimiter defaults
-sleep 1
-sudo update-rc.d emailcentre defaults
-sleep 1
-sudo update-rc.d logging defaults
-sleep 1
-sudo update-rc.d messagecentre defaults
-sleep 1
-sudo update-rc.d metering defaults
-sleep 1
-sudo update-rc.d modbus defaults
-sleep 1
-sudo update-rc.d modbusgateway defaults
-sleep 1
-sudo update-rc.d monit defaults
-sleep 1
-sudo update-rc.d nabers defaults
-sleep 1
-sudo update-rc.d nabersieq defaults
-sleep 1
-sudo update-rc.d optergy defaults
-sleep 1
-sudo update-rc.d optimumstart defaults
-sleep 1
-sudo update-rc.d serial defaults
-sleep 1
-sudo update-rc.d smscentre defaults
-sleep 1
-sudo update-rc.d vpn defaults
-sleep 1
-sudo update-rc.d weatherstation defaults
-sleep 1
+# sleep 1
+# sudo service postgresql restart
+# sleep 1
+# sudo -u postgres  psql -c "create database optergy 'Optergy main db - By Optergy [dev:elshan]';"
+# sleep 1
+# sudo -u postgres  psql -c "create database countlogs 'Count log db - By Optergy [dev:elshan]';"
+# sleep 1
+# sudo -u postgres  psql -c "create database energylogs 'Store all energy related db - By Optergy [dev:elshan]';"
+# sleep 1
+# sudo -u postgres  psql -c "create database issues 'Issues db - By Optergy [dev:elshan]';"
+# sleep 1
+# sudo -u postgres  psql -c "create database naberslogs 'Store IEQ Data - By Optergy [dev:elshan]';"
+# sleep 1
+# sudo -u postgres  psql -c "create database trendlogs 'Store trend Data - By Optergy [dev:elshan]';"
+# sleep 1
+# sudo -u postgres  psql -c "create user optergy with encrypted password 'Op73gyD@t@bA53';"
+# sleep 1
+# sudo -u postgres  psql -c "grant all privileges on database optergy to optergy;"
+# sleep 1
+# sudo -u postgres  psql -c "grant all privileges on database countlogs to optergy;"
+# sleep 1
+# sudo -u postgres  psql -c "grant all privileges on database energylogs to optergy;"
+# sleep 1
+# sudo -u postgres  psql -c "grant all privileges on database issues to optergy;"
+# sleep 1
+# sudo -u postgres  psql -c "grant all privileges on database naberslogs to optergy;"
+# sleep 1
+# sudo -u postgres  psql -c "grant all privileges on database trendlogs to optergy;"
+# sleep 1
+# #sudo apt-get -o Dpkg::Options::="--force-overwrite" install optergy
+# sleep 1
+# sudo dpkg -i --force-overwrite /media/cdrom/pool/main/o/optergy/optergy_3.0.2a_all.deb
+# sleep 1
+# sudo chown -R optergy:optergy /usr/local/tomcat/
+# sudo chown -R optergy:optergy /usr/local/Optergy/
+# sleep 3
+# sudo update-rc.d bacnet defaults
+# sleep 1
+# sudo update-rc.d compiler defaults
+# sleep 1
+# sudo update-rc.d counter defaults
+# sleep 1
+# sudo update-rc.d demandlimiter defaults
+# sleep 1
+# sudo update-rc.d emailcentre defaults
+# sleep 1
+# sudo update-rc.d logging defaults
+# sleep 1
+# sudo update-rc.d messagecentre defaults
+# sleep 1
+# sudo update-rc.d metering defaults
+# sleep 1
+# sudo update-rc.d modbus defaults
+# sleep 1
+# sudo update-rc.d modbusgateway defaults
+# sleep 1
+# sudo update-rc.d monit defaults
+# sleep 1
+# sudo update-rc.d nabers defaults
+# sleep 1
+# sudo update-rc.d nabersieq defaults
+# sleep 1
+# sudo update-rc.d optergy defaults
+# sleep 1
+# sudo update-rc.d optimumstart defaults
+# sleep 1
+# sudo update-rc.d serial defaults
+# sleep 1
+# sudo update-rc.d smscentre defaults
+# sleep 1
+# sudo update-rc.d vpn defaults
+# sleep 1
+# sudo update-rc.d weatherstation defaults
+# sleep 1
 
 
