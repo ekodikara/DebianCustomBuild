@@ -98,7 +98,7 @@ dbus
 # geoip-database
 # ghostscript
 iproute
-# rsync
+rsync
 # perl
 # telnet
 # traceroute
