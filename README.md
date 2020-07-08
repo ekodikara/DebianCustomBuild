@@ -1,2 +1,3 @@
 # DebianCustomBuild
-Debian Simple-CDD
+Debian Simple-CDD By Elshan
+This is just for Optergy release
