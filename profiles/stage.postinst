@@ -39,6 +39,22 @@ EOF
 
 sleep 1
 
+cat << EOF > /etc/motd
+
+EOF
+
+cat << EOF > /etc/update-motd.d/10-uname
+
+#!/bin/sh
+
+cat /usr/local/Optergy/conf/version
+figlet -f smslant "Optergy Enterprise"
+echo ""
+last -4
+
+EOF 
+
+
 cat << EOF > /home/optergy/.bashrc
 
 # Optergy bashrc to make fancy looking gui in bash | dev Elshan -2020
@@ -54,7 +70,7 @@ HISTSIZE=1000
 HISTFILESIZE=2000
 
 shopt -s checkwinsize
-clear
+
 
 case "$TERM" in
     xterm-color) color_prompt=yes;;
@@ -136,14 +152,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-
-figlet -f smslant "Optergy Enterprise"
-cat /usr/local/Optergy/conf/version
-echo ""
-last -2
-echo ""
-date
-echo ""
 
 EOF
 
@@ -164,7 +172,6 @@ HISTSIZE=1000
 HISTFILESIZE=2000
 
 shopt -s checkwinsize
-clear
 
 case "$TERM" in
     xterm-color) color_prompt=yes;;
@@ -246,14 +253,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-
-figlet -f smslant "Optergy Enterprise"
-cat /usr/local/Optergy/conf/version
-echo ""
-last -2
-echo ""
-date
-echo ""
 
 EOF
 
