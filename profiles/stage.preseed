@@ -161,7 +161,7 @@ d-i clock-setup/ntp-server string pool.ntp.org
 # name must be given in traditional, non-devfs format (so e.g. /dev/sda
 # and not e.g. /dev/discs/disc0/disc).
 # For example, to use the first SCSI/SATA hard disk:
-#d-i partman-auto/disk string /dev/sda
+d-i partman-auto/disk string /dev/sda
 # In addition, you'll need to specify the method to use.
 # The presently available methods are:
 # - regular: use the usual partition types for your architecture
@@ -183,7 +183,8 @@ d-i partman-lvm/confirm_nooverwrite boolean true
 # - atomic: all files in one partition
 # - home:   separate /home partition
 # - multi:  separate /home, /var, and /tmp partitions
-d-i partman-auto/choose_recipe select atomic
+#elshan
+d-i partman-auto/choose_recipe select home
 
 # Or provide a recipe of your own...
 # If you have a way to get a recipe file into the d-i environment, you can
