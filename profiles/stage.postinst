@@ -22,14 +22,22 @@ iface eth0 inet static
 
 
 EOF
+
+sleep 1
+
 cat << EOF >> /etc/sudoers
 optergy ALL=(ALL) NOPASSWD:ALL
 
 EOF
+
+sleep 1
+
 cat << EOF > /boot/grub/custom.cfg
 set color_normal=black/black
 
 EOF
+
+sleep 1
 
 cat << EOF > /etc/resolv.conf
 nameserver 8.8.8.8
@@ -40,8 +48,10 @@ EOF
 sleep 1
 
 cat << EOF > /etc/motd
-
+#test
 EOF
+
+sleep 1
 
 cat << EOF > /etc/update-motd.d/10-uname
 
@@ -54,6 +64,7 @@ last -4
 
 EOF 
 
+sleep 1
 
 cat << EOF > /home/optergy/.bashrc
 
