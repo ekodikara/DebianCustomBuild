@@ -277,6 +277,10 @@ d-i partman/choose_partition select finish
 d-i partman/confirm boolean true
 d-i partman/confirm_nooverwrite boolean true
 
+
+#elshan
+d-i partman-efi/non_efi_system boolean true
+
 ## Controlling how partitions are mounted
 # The default is to mount by UUID, but you can also choose "traditional" to
 # use traditional device names, or "label" to try filesystem labels before
