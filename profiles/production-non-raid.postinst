@@ -9,7 +9,6 @@ sed -i 's/white\/blue/black\/green/' /etc/grub.d/05_debian_theme
 update-grub
 sleep 2
 
-#setting up ip
 cat << EOF > /etc/network/interfaces
 auto lo
 iface lo inet loopback
@@ -23,15 +22,16 @@ iface eth0 inet static
 
 
 EOF
+
 sleep 1
-#set optergy user
+
 cat << EOF >> /etc/sudoers
 optergy ALL=(ALL) NOPASSWD:ALL
 
 EOF
 
 sleep 1
-#set colors for grub
+
 cat << EOF > /boot/grub/custom.cfg
 set color_normal=black/black
 
@@ -39,11 +39,16 @@ EOF
 
 sleep 1
 
-#set default name servers
 cat << EOF > /etc/resolv.conf
 nameserver 8.8.8.8
 nameserver 8.8.4.4
 
+EOF
+
+sleep 1
+
+cat << EOF > /etc/motd
+Optergy Enterprise 3 @ 2020 Optergy Pty Ltd. All rights reserved.
 EOF
 
 sleep 1
@@ -63,7 +68,7 @@ HISTSIZE=1000
 HISTFILESIZE=2000
 
 shopt -s checkwinsize
-clear
+
 
 case "$TERM" in
     xterm-color) color_prompt=yes;;
@@ -145,14 +150,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-
-figlet -f smslant "Optergy Enterprise"
-cat /usr/local/Optergy/conf/version
-echo ""
-last -2
-echo ""
-date
-echo ""
 
 EOF
 
@@ -173,7 +170,6 @@ HISTSIZE=1000
 HISTFILESIZE=2000
 
 shopt -s checkwinsize
-clear
 
 case "$TERM" in
     xterm-color) color_prompt=yes;;
@@ -255,14 +251,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-
-figlet -f smslant "Optergy Enterprise"
-cat /usr/local/Optergy/conf/version
-echo ""
-last -2
-echo ""
-date
-echo ""
 
 EOF
 
@@ -354,4 +342,9 @@ sleep 1
 sudo update-rc.d weatherstation defaults
 sleep 1
 
-
+cat << EOF > /etc/update-motd.d/10-uname
+#!/bin/sh
+cat /usr/local/Optergy/conf/version
+figlet -f smslant "Optergy Enterprise"
+last -4
+EOF 
