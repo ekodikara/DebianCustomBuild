@@ -1,6 +1,7 @@
 fakeroot
 # build-essential
 wireshark
+tshark
 zip
 # xz-utils
 # libssl-dev
