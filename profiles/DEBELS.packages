@@ -1,104 +1,100 @@
-git
 fakeroot
-build-essential
-xz-utils
-libssl-dev
-bc
-flex
-libelf-dev
-bison
-linux-headers-4.9.0-12-amd64
-dkms
-sudo
-curl
-gnupg
-net-tools
-htop
-at
-aptitude
-postgresql
-monit
-sysv-rc-conf
-dmidecode
-ssh
-nut
-whois
-ufw
-zip
-netcat
-parted
-tree
-ntp
-bsdtar
-
-firmware-bnx2
-mdadm
-fail2ban
-dos2unix
-
-#monitoring tools
-
-lshw
-iptraf
-tcpdump
-iotop
-atop
-nethogs
-iftop
-vnstat
-nmon
-glances
-strace
-lsof
-nmap
+# build-essential
 wireshark
-tshark
-selinux-basics
-selinux-policy-default
-auditd
-logcheck
-aide
-samba
+zip
+# xz-utils
+# libssl-dev
+# bc
+# flex
+# libelf-dev
+# bison
+# linux-headers-4.9.0-12-amd64
+# dkms
+# sudo
+# curl
+# gnupg
+# net-tools
+# htop
+# at
+# aptitude
+# postgresql
+# monit
+# sysv-rc-conf
+# dmidecode
+# ssh
+# nut
+# whois
+# ufw
+# netcat
+# parted
+# ntp
+# bsdtar
+# firmware-bnx2
+# mdadm
+# fail2ban
+# dos2unix
+#monitoring tools
+# lshw
+# iptraf
+# tcpdump
+# iotop
+# atop
+# nethogs
+# iftop
+# vnstat
+# nmon
+# glances
+# strace
+# lsof
+# nmap
 
-#apps ported from old debian
-apparmor
-apt-listchanges
-attr
+# tshark
+# selinux-basics
+# selinux-policy-default
+# auditd
+# logcheck
+# aide
+# samba
 
-acl 
-acpi
-acpi-support-base
-acpid
-apparmor
-apt-listchanges
-attr
-avahi-daemon
-bind9
-bridge-utils
-bsd-mailx
-ca-certificates
-cgmanager
-colord
-dbus
-dc
-discover
-dnsutils
-easy-rsa
-exim4
-extundelete
-file
-freepats
-ftp
-geoclue-2.0
-geoip-database
-ghostscript
-iproute
-rsync
-perl
-telnet
-traceroute
+# #apps ported from old debian
+# apparmor
+# apt-listchanges
+# attr
+
+# acl 
+# acpi
+# acpi-support-base
+# acpid
+# apparmor
+# apt-listchanges
+# attr
+# avahi-daemon
+# bind9
+# bridge-utils
+# bsd-mailx
+# ca-certificates
+# cgmanager
+# colord
+# dbus
+# dc
+# discover
+# dnsutils
+# easy-rsa
+# exim4
+# extundelete
+# file
+# freepats
+# ftp
+# geoclue-2.0
+# geoip-database
+# ghostscript
+# iproute
+# rsync
+# perl
+# telnet
+# traceroute
 
 
-optergy-java
-tomcat
-optergy
+# optergy-java
+# tomcat
+# optergy

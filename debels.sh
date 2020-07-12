@@ -2,16 +2,16 @@
 
 echo "removing old debs"
 rm -rf /home/optergy/deb-optergy/tmp/
+rm -rf /home/optergy/deb-optergy/images/
 
 echo "setting executables"
-#chmod +x /home/optergy/deb-optergy/profiles/dev.postinst
-chmod +x /home/optergy/deb-optergy/profiles/dev.postinst
+#chmod +x /home/optergy/deb-optergy/profiles/default.postinst
+chmod +x /home/optergy/deb-optergy/profiles/DEBELS.postinst
 #chmod +x /home/optergy/deb-optergy/default.postinst
 echo "converting files"
-#dos2unix /home/optergy/deb-optergy/profiles/*.*
+dos2unix /home/optergy/deb-optergy/profiles/*.*
 #d-i preseed/late_command string in-target "sed -i 's/GRUB_CMDLINE_LINUX=\"\"/GRUB_CMDLINE_LINUX=\"net.ifnames=0 biosdevname=0\"/' /etc/default/grub"
 
 #d-i preseed/late_command string in-target "update-grub"
-cat /home/optergy/deb-optergy/profiles/dev.packages
-#build-simple-cdd --conf default.conf --local-packages /home/optergy/deb-optergy/debs/ -p stage
-build-simple-cdd --conf /home/optergy/deb-optergy/dev.conf -p dev
+
+build-simple-cdd --conf /home/optergy/deb-optergy/debels.conf -p DEBELS

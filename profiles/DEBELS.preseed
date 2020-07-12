@@ -18,15 +18,15 @@ d-i keyboard-configuration/xkb-keymap select us
 # Disable network configuration entirely. This is useful for cdrom
 # installations on non-networked devices where the network questions,
 # warning and long timeouts are a nuisance.
-#d-i netcfg/enable boolean false
+d-i netcfg/enable boolean false
 
 # netcfg will choose an interface that has link if possible. This makes it
 # skip displaying a list if there is more than one interface.
 #elshan
-d-i netcfg/choose_interface select auto
+#d-i netcfg/choose_interface select auto
 
 # To pick a particular interface instead:
-d-i netcfg/choose_interface select eth0
+#d-i netcfg/choose_interface select eth0
 
 # To set a different link detection timeout (default is 3 seconds).
 # Values are interpreted as seconds.
@@ -117,8 +117,8 @@ d-i apt-setup/contrib boolean true
 d-i passwd/make-user boolean true
 
 # Root password, either in clear text
-#d-i passwd/root-password password optergy!1EM?areyoukiddng?thisIsNotRealPassword..haha
-#d-i passwd/root-password-again password optergy!1EM?areyoukiddng?thisIsNotRealPassword..haha
+#d-i passwd/root-password password optergy!1EM?areyoukidding?thisIsNotRealPassword..haha
+#d-i passwd/root-password-again password optergy!1EM?areyoukidding?thisIsNotRealPassword..haha
 # or encrypted using a crypt(3)  hash.
 d-i passwd/root-password-crypted password $6$JO7wRMh3$qH5kEzpZculiZak9EiSCJlTfjrEf4ojo81.lZNUeyhtLJ0kZgYy6S/wUieWFZyB2qGFWceiirj4RSW5TDlBxD1
 
@@ -126,8 +126,8 @@ d-i passwd/root-password-crypted password $6$JO7wRMh3$qH5kEzpZculiZak9EiSCJlTfjr
 d-i passwd/user-fullname string OptergyE
 d-i passwd/username string optergy
 # Normal user's password, either in clear text
-#d-i passwd/user-password password optergy!1EM?areyoukiddng?thisIsNotRealPassword..haha
-#d-i passwd/user-password-again password optergy!1EM?areyoukiddng?thisIsNotRealPassword..haha
+#d-i passwd/user-password password optergy!1EM?areyoukidding?thisIsNotRealPassword..haha
+#d-i passwd/user-password-again password optergy!1EM?areyoukidding?thisIsNotRealPassword..haha
 # or encrypted using a crypt(3) hash.
 d-i passwd/user-password-crypted password $6$6.EoTO5w$HsJVHlQnDXlnoVmGZc5z02N24iHMg9gwCcDUltABz/NldzZbQtC5NJQP4nZxb75z4fGfkFOpe1/9vbx/T.fos.
 # Create the first user with the specified UID instead of the default.
@@ -148,7 +148,7 @@ d-i time/zone string US/Eastern
 # Controls whether to use NTP to set the clock during the install
 d-i clock-setup/ntp boolean true
 # NTP server to use. The default is almost always fine here.
-#d-i clock-setup/ntp-server string ntp.example.com
+d-i clock-setup/ntp-server string pool.ntp.org
 
 ### Partitioning
 ## Partitioning example
@@ -161,7 +161,7 @@ d-i clock-setup/ntp boolean true
 # name must be given in traditional, non-devfs format (so e.g. /dev/sda
 # and not e.g. /dev/discs/disc0/disc).
 # For example, to use the first SCSI/SATA hard disk:
-#d-i partman-auto/disk string /dev/sda
+d-i partman-auto/disk string /dev/sda
 # In addition, you'll need to specify the method to use.
 # The presently available methods are:
 # - regular: use the usual partition types for your architecture
@@ -183,7 +183,8 @@ d-i partman-lvm/confirm_nooverwrite boolean true
 # - atomic: all files in one partition
 # - home:   separate /home partition
 # - multi:  separate /home, /var, and /tmp partitions
-d-i partman-auto/choose_recipe select atomic
+#elshan
+d-i partman-auto/choose_recipe select home
 
 # Or provide a recipe of your own...
 # If you have a way to get a recipe file into the d-i environment, you can
@@ -226,7 +227,6 @@ d-i partman/confirm_nooverwrite boolean true
 # When disk encryption is enabled, skip wiping the partitions beforehand.
 #d-i partman-auto-crypto/erase_disks boolean false
 
-#RAID Elshan
 ## Partitioning using RAID
 # The method should be set to "raid".
 #d-i partman-auto/method string raid
@@ -277,8 +277,8 @@ d-i partman/choose_partition select finish
 d-i partman/confirm boolean true
 d-i partman/confirm_nooverwrite boolean true
 
-
 #elshan
+
 d-i partman-efi/non_efi_system boolean true
 
 ## Controlling how partitions are mounted
