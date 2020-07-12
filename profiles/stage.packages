@@ -49,8 +49,10 @@ vnstat
 glances
 # strace
 lsof
-# nmap
+nmap
 zip
+xorg
+openbox
 # wireshark
 
 #tshark
