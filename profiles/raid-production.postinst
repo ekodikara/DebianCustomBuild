@@ -342,9 +342,18 @@ sleep 1
 sudo update-rc.d weatherstation defaults
 sleep 1
 
+# cat << EOF > /etc/update-motd.d/10-uname
+# #!/bin/sh
+# cat /usr/local/Optergy/conf/version
+# figlet -f smslant "Optergy Enterprise"
+# last -4
+# EOF 
+
 cat << EOF > /etc/update-motd.d/10-uname
-#!/bin/sh
-cat /usr/local/Optergy/conf/version
-figlet -f smslant "Optergy Enterprise"
-last -4
-EOF 
+  ____       __                      ____     __                   _        
+ / __ \___  / /____ _______ ___ __  / __/__  / /____ _______  ____(_)__ ___ 
+/ /_/ / _ \/ __/ -_) __/ _ `/ // / / _// _ \/ __/ -_) __/ _ \/ __/ (_-</ -_)
+\____/ .__/\__/\__/_/  \_, /\_, / /___/_//_/\__/\__/_/ / .__/_/ /_/___/\__/ 
+    /_/               /___//___/                      /_/                   
+
+EOF
