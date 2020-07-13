@@ -1,3 +1,4 @@
+#lsb-compat
 sudo
 git
 fakeroot
@@ -11,6 +12,7 @@ libelf-dev
 bison
 linux-headers-4.9.0-12-amd64
 dkms
+sudo
 curl
 gnupg
 net-tools
@@ -25,6 +27,7 @@ ssh
 nut
 whois
 ufw
+zip
 netcat
 parted
 tree
@@ -32,6 +35,7 @@ ntp
 bsdtar
 optergy-java
 tomcat
+#firmware-bnx2
 mdadm
 fail2ban
 dos2unix
@@ -43,15 +47,16 @@ tcpdump
 iotop
 figlet
 # atop
+# nethog
 # iftop
 vnstat
 # nmon
-glances
+# glances
 # strace
 lsof
 # nmap
-zip
-# wireshark
+
+wireshark
 
 #tshark
 selinux-basics
@@ -82,7 +87,7 @@ cgmanager
 dbus
 # dc
 # discover
-# dnsutils
+#dnsutils
 # easy-rsa
 # exim4
 # extundelete
@@ -94,13 +99,14 @@ dbus
 # ghostscript
 iproute
 rsync
-telnet
+# perl
+# telnet
 # traceroute
-# lsb-compat
+#lsb-compat
+
 
 optergy-util-ex
 perl
+#end
+#end
 
-#firmware-realtek
-firmware-bnx2
-#firmware-bnx2x

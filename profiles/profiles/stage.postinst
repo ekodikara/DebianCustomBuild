@@ -22,33 +22,19 @@ iface eth0 inet static
 
 
 EOF
-
-sleep 1
-
 cat << EOF >> /etc/sudoers
 optergy ALL=(ALL) NOPASSWD:ALL
 
 EOF
-
-sleep 1
-
 cat << EOF > /boot/grub/custom.cfg
 set color_normal=black/black
 
 EOF
 
-sleep 1
-
 cat << EOF > /etc/resolv.conf
 nameserver 8.8.8.8
 nameserver 8.8.4.4
 
-EOF
-
-sleep 1
-
-cat << EOF > /etc/motd
-Optergy Enterprise 3 @ 2020 Optergy Pty Ltd. All rights reserved.
 EOF
 
 sleep 1
@@ -68,7 +54,7 @@ HISTSIZE=1000
 HISTFILESIZE=2000
 
 shopt -s checkwinsize
-
+clear
 
 case "$TERM" in
     xterm-color) color_prompt=yes;;
@@ -150,6 +136,14 @@ if ! shopt -oq posix; then
   fi
 fi
 
+
+figlet -f smslant "Optergy Enterprise"
+cat /usr/local/Optergy/conf/version
+echo ""
+last -2
+echo ""
+date
+echo ""
 
 EOF
 
@@ -170,6 +164,7 @@ HISTSIZE=1000
 HISTFILESIZE=2000
 
 shopt -s checkwinsize
+clear
 
 case "$TERM" in
     xterm-color) color_prompt=yes;;
@@ -251,6 +246,14 @@ if ! shopt -oq posix; then
   fi
 fi
 
+
+figlet -f smslant "Optergy Enterprise"
+cat /usr/local/Optergy/conf/version
+echo ""
+last -2
+echo ""
+date
+echo ""
 
 EOF
 
@@ -342,11 +345,4 @@ sleep 1
 sudo update-rc.d weatherstation defaults
 sleep 1
 
-cat << EOF > /etc/update-motd.d/10-uname
-  ____       __                      ____     __                   _        
- / __ \___  / /____ _______ ___ __  / __/__  / /____ _______  ____(_)__ ___ 
-/ /_/ / _ \/ __/ -_) __/ _ `/ // / / _// _ \/ __/ -_) __/ _ \/ __/ (_-</ -_)
-\____/ .__/\__/\__/_/  \_, /\_, / /___/_//_/\__/\__/_/ / .__/_/ /_/___/\__/ 
-    /_/               /___//___/                      /_/                   
 
-EOF
