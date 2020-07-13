@@ -347,4 +347,5 @@ cat << EOF > /etc/update-motd.d/10-uname
 cat /usr/local/Optergy/conf/version
 figlet -f smslant "Optergy Enterprise"
 last -4
-EOF 
+
+EOF
